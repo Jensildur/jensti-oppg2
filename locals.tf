@@ -11,5 +11,6 @@ locals {
     vm_rg_name = "${var.vm_rg_name}-${local.workspaces}"
 
     web_rg_name = "${var.rg_web_name}-${local.workspaces}"
+    web_suffix = "<h1>${terraform.workspace}</h1>"
     
 }

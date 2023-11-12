@@ -21,15 +21,15 @@ jobs:
         run: terraform init
         working-directory: ${{ env.WORKING_DIR }}
         
-      - name: Terraform workspace select or create dev
-        run: terraform workspace select dev || terraform workspace new dev
+      - name: Terraform workspace select or create develop
+        run: terraform workspace select develop || terraform workspace new dev
         working-directory: ${{ env.WORKING_DIR }}
       
-      - name: Terraform apply dev
+      - name: Terraform apply develop
         run: terraform apply -auto-approve
         working-directory: ${{ env.WORKING_DIR }}
 
-      - name: Test dev
+      - name: Test develop
         run: curl $(terraform output -raw primary_web_endpoint)
         working-directory: ${{ env.WORKING_DIR }}
 
@@ -44,15 +44,15 @@ jobs:
         run: terraform init
         working-directory: ${{ env.WORKING_DIR }}
         
-      - name: Terraform workspace select or create stage
-        run: terraform workspace select stage || terraform workspace new stage
+      - name: Terraform workspace select or create staging
+        run: terraform workspace select staging || terraform workspace new staging
         working-directory: ${{ env.WORKING_DIR }}
       
-      - name: Terraform apply stage
+      - name: Terraform apply staging
         run: terraform apply -auto-approve
         working-directory: ${{ env.WORKING_DIR }}
 
-      - name: Test stage
+      - name: Test staging
         run: curl $(terraform output -raw primary_web_endpoint)
         working-directory: ${{ env.WORKING_DIR }}
 
@@ -70,15 +70,15 @@ jobs:
         run: terraform init
         working-directory: ${{ env.WORKING_DIR }}
         
-      - name: Terraform workspace select or create prod
-        run: terraform workspace select prod || terraform workspace new prod
+      - name: Terraform workspace select or create production
+        run: terraform workspace select production || terraform workspace new production
         working-directory: ${{ env.WORKING_DIR }}
       
-      - name: Terraform apply prod
+      - name: Terraform apply production
         run: terraform apply -auto-approve
         working-directory: ${{ env.WORKING_DIR }}
 
-      - name: Test prod
+      - name: Test production
         run: curl $(terraform output -raw primary_web_endpoint)
         working-directory: ${{ env.WORKING_DIR }}
 

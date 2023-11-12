@@ -1,0 +1,1 @@
+#Should probably use the key vault.... atleast for vm secrets

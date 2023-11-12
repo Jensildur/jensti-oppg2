@@ -13,12 +13,18 @@ variable "kv_name" {
     description = "Key Vault name"
 }
 
-variable "kv_secret" {
+variable "kv_sa_key_desc" {
     type = string
-    description = "Key Vault secret name"
+    description = "Storage account access key descriptor"
+    default = "sa-access-key-name"
 }
 
-variable "kv_secret_value" {
+variable "kv_sa_key" {
     type = string
-    description = "Key Vault secret value"
+    description = "Storage account access key"
+}
+
+variable "kv_sa_name" {
+    type = string
+    description = "Key Vault storage account name"
 }

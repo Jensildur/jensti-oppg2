@@ -1,9 +1,19 @@
+
+
 terraform {
     required_providers {
         azurerm = {
         source  = "hashicorp/azurerm"
         version = "3.71.0"
         }
+    }
+
+    backend "azurerm" {
+        resource_group_name  = "rg-backend-tfstate"
+        storage_account_name = "sabackend1112"
+        container_name       = "tfstate"
+        key                  = "terraform.tfstate"
+      
     }
 }
 
@@ -16,8 +26,8 @@ module "KeyVault" {
     kv_rg_name = var.kv_rg_name
     kv_name = var.kv_name
     kv_rg_location = var.kv_rg_location
-    kv_secret = var.kv_secret
-    kv_secret_value = var.kv_secret_value
+    kv_sa_key = module.StorageAccount.p_access_key_output
+    kv_sa_name = module.StorageAccount.sa_name_output
 }
 
 module "StorageAccount" {
@@ -25,6 +35,7 @@ module "StorageAccount" {
   base_name = var.sa_base_name
   rg_name = var.sa_rg_name
   location = var.sa_location
+  sa_container_name = var.sa_container_name
 }
 
 #subnet names hardcoded for now...

@@ -88,14 +88,8 @@ variable "kv_name" {
     default = "kv-1"
 }
 
-variable "kv_secret" {
+variable "sa_container_name" {
     type = string
-    description = "Key Vault secret name"
-    default = "Dummy-secret"
-}
-
-variable "kv_secret_value" {
-    type = string
-    description = "Key Vault secret value"
-    default = "dummy-secret-value"
+    description = "Storage account container name"
+    default = "sacname"
 }

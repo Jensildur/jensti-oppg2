@@ -12,3 +12,8 @@ variable "location" {
     type = string
     description = "the location of the resource group"
 }
+
+variable "sa_container_name" {
+    type = string
+    description = "Storage account container name"
+}

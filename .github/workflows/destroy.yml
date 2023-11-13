@@ -2,7 +2,7 @@ name: Terraform destroy
 
 on:
   push:
-
+    branches-ignore: ["main", "staging", "develop"]
   workflow_dispatch:
 
 env:

@@ -67,6 +67,6 @@ module "webModule"{
     rg_web_name = local.web_rg_name
     sa_web_name = "${local.sa_web_name}${random_string.random_string.result}"
     index_document = var.index_document
-    source_content = var.source_content
+    source_content = "${var.source_content}${local.web_suffix}"
 }
   

@@ -17,6 +17,7 @@ variable "sa_web_name" {
 variable "index_document" {
     type = string
     description = "Index document"
+    default = "index.html"
 }
 
 variable "source_content" {

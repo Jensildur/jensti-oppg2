@@ -40,3 +40,7 @@ jobs:
       - name: Terraform validate
         id: validate
         run: terraform validate
+      
+      - name: Terraform fmt
+        id: fmt
+        run: terraform fmt

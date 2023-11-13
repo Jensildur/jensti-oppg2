@@ -1,115 +1,115 @@
 variable "sa_rg_name" {
-    type = string
-    description = "Resource group name"
-    default = "sargone"
+  type        = string
+  description = "Resource group name"
+  default     = "sargone"
 }
 
 variable "sa_location" {
-    type = string
-    description = "the location of the resource group"
-    default = "West Europe"
+  type        = string
+  description = "the location of the resource group"
+  default     = "West Europe"
 }
 
 variable "sa_base_name" {
-    type = string
-    description = "Storage account name"
-    default = "sabasename"
+  type        = string
+  description = "Storage account name"
+  default     = "sabasename"
 }
 
 variable "net_rg_name" {
-    type = string
-    description = "Virtual network name"
-    default = "net-rg-name"
+  type        = string
+  description = "Virtual network name"
+  default     = "net-rg-name"
 }
 
 variable "net_rg_location" {
-    type = string
-    description = "the location of the Virtual Network"
-    default = "West Europe"
+  type        = string
+  description = "the location of the Virtual Network"
+  default     = "West Europe"
 }
 
 variable "net_sg_name" {
-    type = string
-    description = "Network security group name"
-    default = "net-sg-1"
+  type        = string
+  description = "Network security group name"
+  default     = "net-sg-1"
 }
 
 variable "v_net_name" {
-    type = string
-    description = "Virtual network name"
-    default = "virtual-network-1"
+  type        = string
+  description = "Virtual network name"
+  default     = "virtual-network-1"
 }
 
 variable "vm_name" {
-    type = string
-    description = "virtual machine name"
-    default = "vm-1"
+  type        = string
+  description = "virtual machine name"
+  default     = "vm-1"
 }
 
 variable "vm_location" {
-    type = string
-    description = "the location of the virtual machine"
-    default = "West Europe"
+  type        = string
+  description = "the location of the virtual machine"
+  default     = "West Europe"
 }
 
 variable "vm_network_interface_name" {
-    type = string
-    description = "the name of the network interface"
-    default = "eth0"
+  type        = string
+  description = "the name of the network interface"
+  default     = "eth0"
 }
 
 variable "vm_pip_name" {
-    type = string
-    description = "the name of the public ip"
-    default = "pip-1"
+  type        = string
+  description = "the name of the public ip"
+  default     = "pip-1"
 }
 
 variable "vm_rg_name" {
-    type = string
-    description = "the name of the VM resource group"
-    default = "vm-rg-1"
+  type        = string
+  description = "the name of the VM resource group"
+  default     = "vm-rg-1"
 }
 
 variable "kv_rg_location" {
-    type = string
-    description = "the location of the Key Vault resource group"
-    default = "West Europe"
+  type        = string
+  description = "the location of the Key Vault resource group"
+  default     = "West Europe"
 }
 
 variable "kv_rg_name" {
-    type = string
-    description = "Key Vault Resource group name"
-    default = "kv-rg-1"
+  type        = string
+  description = "Key Vault Resource group name"
+  default     = "kv-rg-1"
 }
 
 variable "kv_name" {
-    type = string
-    description = "Key Vault name"
-    default = "kv-1"
+  type        = string
+  description = "Key Vault name"
+  default     = "kv-1"
 }
 
 variable "sa_container_name" {
-    type = string
-    description = "Storage account container name"
-    default = "sacname"
+  type        = string
+  description = "Storage account container name"
+  default     = "sacname"
 }
 
 variable "rg_web_name" {
-    type = string
-    description = "Resource group name"
+  type        = string
+  description = "Resource group name"
 }
 
 variable "sa_web_name" {
-    type = string
-    description = "Storage account name"
+  type        = string
+  description = "Storage account name"
 }
 
 variable "index_document" {
-    type = string
-    description = "Index document"
+  type        = string
+  description = "Index document"
 }
 
 variable "source_content" {
-    type = string
-    description = "Source content"
+  type        = string
+  description = "Source content"
 }

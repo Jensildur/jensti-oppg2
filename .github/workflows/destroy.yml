@@ -1,0 +1,67 @@
+name: Terraform destroy
+
+on:
+  push:
+
+  workflow_dispatch:
+
+env:
+  ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+jobs:
+  dev_stage:
+    name: develop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Terraform init
+        id: init
+        run: terraform init 
+        
+      - name: Terraform workspace select or create develop
+        id: workspace
+        run: terraform workspace select develop || terraform workspace new dev
+      
+      - name: Terraform destroy develop
+        id: destroy
+        run: terraform destroy -auto-approve
+
+
+  stage_prod:
+    needs: dev_stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Terraform init
+        run: terraform init
+        
+      - name: Terraform workspace select or create staging
+        run: terraform workspace select staging || terraform workspace new staging
+      
+      - name: Terraform destroy staging
+        run: terraform destroy -auto-approve
+
+
+  prod:
+    needs: stage_prod
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Terraform init
+        run: terraform init
+        
+      - name: Terraform workspace select or create production
+        run: terraform workspace select production || terraform workspace new production
+      
+      - name: Terraform destroy production
+        run: terraform destroy -auto-approve
+

@@ -1,7 +1,7 @@
 # Assignment 2 vol 2 Jens Tingstad
 
 
-## Current progress:
+## Current state:
 
 Have currently expanded to include a predefined backend store and added support for workspaces.
 Storage accounts and resource group names derived from workspace. <br>
@@ -21,6 +21,21 @@ Currently we are operating with 3 different workspaces, mirroring three git-bran
    1. Final step in the development pipeline - Production , should hold the "latest and greatest" source and deployments. 
 
 
+
+## CI/CD pipeline
+
+Current CI/CD workflow works like this: 
+
+1. Development branch is updated with new source or new infrastructure code.
+2. Branch is pushed to github repository
+3. Two hooks notice activity and two workflows are started:
+   1. Validate, runs terraform validation
+   2. Workspace workflow initiates, creating and deploying configuration matching the workspace specification (ensures the infrastructure code actually works).
+4. Branch is the merged to staging
+   1. In theory this is where more strategic testing happend, but none is implemented. This would be; unit testing, regression testing, manual inspections, etc.
+5. Assuming tests passed:
+   1. Create a pull request to main
+      1. Must be manually approved
 
 
 

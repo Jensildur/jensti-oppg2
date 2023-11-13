@@ -29,7 +29,7 @@ Current CI/CD workflow works like this:
 1. Development branch is updated with new source or new infrastructure code.
 2. Branch is pushed to github repository
 3. Two hooks notice activity and two workflows are started:
-   1. Validate, runs terraform validation
+   1. Validate, runs terraform validation (validate, fmt)
    2. Workspace workflow initiates, creating and deploying configuration matching the workspace specification (ensures the infrastructure code actually works).
 4. Branch is the merged to staging
    1. In theory this is where more strategic testing happend, but none is implemented. This would be; unit testing, regression testing, manual inspections, etc.
@@ -38,8 +38,8 @@ Current CI/CD workflow works like this:
       1. Must be manually approved
 
 
-
-Whats missing: Current CI/CD state is not good enough, there is no pull request implementation stopping for manual input for main merge. <br>
-Current test-scope to small, limited to only terraform catching defined errors, any error in actual deployment is not caught. Should expand to some simple test-suites to run as part of develop->staging workflow. <br>
-
-I know I am very late with delivery now, (excuses on request) but I will continue to improve this delivery this week since I did not have as much time available as initially intended. 
+**Whats missing:**<br>
+- More in-depth testing and development on different workflow configs. 
+- Would have liked to experiment with different branches and non-defaul entrypoints. 
+- More complex webpages (IaC would be same...)
+- Different Azure resource deployments

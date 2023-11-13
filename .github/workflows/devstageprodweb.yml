@@ -14,21 +14,26 @@ env:
 
 jobs:
   dev_stage:
+    name: "Dev and Staging"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Terraform init
-        run: terraform init
+        id: init
+        run: terraform init 
         
       - name: Terraform workspace select or create develop
+        id: workspace
         run: terraform workspace select develop || terraform workspace new dev
       
       - name: Terraform apply develop
+        id: apply
         run: terraform apply -auto-approve
 
       - name: Test develop
+        id: test
         run: curl $(terraform output -raw primary_web_endpoint)
 
   stage_prod:
@@ -36,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Terraform init
         run: terraform init
@@ -58,7 +63,7 @@ jobs:
       url: ${{ steps.get_web_endpoint.outputs.WEB_ENDPOINT }} # replace deploy_prod and web_url with actual output variables
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Terraform init
         run: terraform init

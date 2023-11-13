@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "VM_RG" {
-  name     = "VM-resources"
+  name     = var.vm_rg_name
   location = "West Europe"
 }
 

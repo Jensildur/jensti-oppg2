@@ -36,6 +36,7 @@ Current CI/CD workflow works like this:
 5. Assuming tests passed:
    1. Create a pull request to main
       1. Must be manually approved
+6. Created a workflow for destroying azure resources which is **manually invoked** when needed
 
 
 **Whats missing:**<br>

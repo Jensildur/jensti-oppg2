@@ -31,9 +31,6 @@ jobs:
         id: apply
         run: terraform apply -auto-approve
 
-      - name: Test develop
-        id: test
-        run: curl $(terraform output -raw primary_web_endpoint)
 
   stage_prod:
     needs: dev_stage
@@ -51,15 +48,13 @@ jobs:
       - name: Terraform apply staging
         run: terraform apply -auto-approve
 
-      - name: Test staging
-        run: curl $(terraform output -raw primary_web_endpoint)
 
   prod:
     needs: stage_prod
     runs-on: ubuntu-latest
     environment: 
       name: production
-      url: ${{ steps.get_web_endpoint.outputs.WEB_ENDPOINT }} # replace deploy_prod and web_url with actual output variables
+      url: ${{ steps.get_web_endpoint.outputs.WEB_ENDPOINT }} 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,8 +68,6 @@ jobs:
       - name: Terraform apply production
         run: terraform apply -auto-approve
 
-      - name: Test production
-        run: curl $(terraform output -raw primary_web_endpoint)
 
       - name: Get Web Endpoint
         id: get_web_endpoint

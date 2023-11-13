@@ -17,6 +17,12 @@ terraform {
     }
 }
 
+resource random_string "random_string" {
+    length = 8
+    special = false
+    upper = false
+}
+
 provider "azurerm" {
     features {}
 }
@@ -32,7 +38,7 @@ module "KeyVault" {
 
 module "StorageAccount" {
   source = "./SAModule"
-  base_name = var.sa_base_name
+  base_name = "${local.sa_base_name}${random_string.random_string.result}"
   rg_name = local.sa_rg_name
   location = var.sa_location
   sa_container_name = var.sa_container_name
@@ -59,7 +65,7 @@ module "VirtualMachine" {
 module "webModule"{
     source = "./webModule"
     rg_web_name = local.web_rg_name
-    sa_web_name = var.sa_web_name
+    sa_web_name = "${local.sa_web_name}${random_string.random_string.result}"
     index_document = var.index_document
     source_content = var.source_content
 }
